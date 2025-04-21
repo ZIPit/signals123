@@ -63,6 +63,7 @@ export default function Home() {
  const [telegramId,setTelegramId] = useState<string|null>(null)
 
   useEffect(()=>{
+    const initTelegram = async()=>{
     if (window.Telegram?.WebApp) {
       
       const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
@@ -71,23 +72,25 @@ export default function Home() {
         setTelegramId(userId);
         alert('TelegramID is ' + userId);
         
-        fetch('/api/login',{
+       await fetch('/api/login',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({userId:telegramId}),
+          body: JSON.stringify({userId}),
 
         });
       }
       else {console.log("no telegram found. Can't init WebApp")}
         
     } 
-    else {alert("no telegram found. window object is empty")}
+    else {alert("no telegram found. window object is empty")}}
+    initTelegram();
   },[])
 
 
-  
+
+
 
   return (    
     <div className="bg-gray-50 min-h-screen text-gray-800">      
