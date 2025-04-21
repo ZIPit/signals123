@@ -62,8 +62,15 @@ export default function Home() {
 
  const [telegramId,setTelegramId] = useState<string|null>(null)
 
-  useEffect(()=>{
+
+ 
+ useEffect(()=>{
+
     const initTelegram = async()=>{
+      
+     
+  
+
     if (window.Telegram?.WebApp) {
       
       const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
@@ -75,34 +82,17 @@ export default function Home() {
        
         //alert('Hello ' + username+"! Welcome.");
         const toastText = "Hello  "+ username+"! Welcome";
-        const notify = () => toast('Hello World', {
-          duration: 4000,
-          position: 'top-center',
         
-          // Styling
-          style: {},
-          className: '',
-        
-          // Custom Icon
-          icon: '👏',
-        
-          // Change colors of success/error/loading icon
-          iconTheme: {
-            primary: '#000',
-            secondary: '#fff',
-          },
-        
-          // Aria
-          ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-          },
-        
-          // Additional Configuration
-          removeDelay: 1000,
-        });
-        
-        notify;
+        toast((t)=>{
+          t.duration = 5000,
+          t.icon= '👏'
+          return (
+            <div className="flex items-center gap-2">
+              {toastText}
+  
+            </div>
+          )
+        })
 
        
         
@@ -127,7 +117,7 @@ export default function Home() {
 
 
   return (    
-    <div className="bg-gray-50 min-h-screen text-gray-800">      
+    <div className="bg-gray-50 min-h-screen text-gray-800">    
       {/* Header */}
       <section className="text-center py-14 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
         <h1 className="text-4xl font-bold mb-2">Live Trading Signals</h1>
