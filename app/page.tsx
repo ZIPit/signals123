@@ -59,6 +59,7 @@ export default function Home() {
  const [telegramId,setTelegramId] = useState<string|null>(null)
 
   useEffect(()=>{
+    console.log('blalba');
     if (window.Telegram?.WebApp) {
       const initDataString = window.Telegram.WebApp.initData;
       if (initDataString){
@@ -67,7 +68,7 @@ export default function Home() {
          const user = JSON.parse(urlParams.get('user')||'{}');
          if (user.id) {
           setTelegramId(user.id.toString());
-          console.log('TelegramID is ',telegramId);
+          alert('TelegramID is '+telegramId);
          } 
         } catch (error) {
           console.error("Error parsing user data:", error);
@@ -75,7 +76,7 @@ export default function Home() {
 
       }
     } 
-    else {console.log("no telegram found")}
+    else {alert("no telegram found")}
   },[])
 
 
