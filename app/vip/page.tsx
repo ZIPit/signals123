@@ -2,7 +2,7 @@
 'use client';
 import { useState } from "react";
 import { CheckCircle, Star, Zap, ShieldCheck, Bell, XCircle } from "lucide-react";
-
+import toast from "react-hot-toast";
 
 
 
@@ -33,7 +33,18 @@ const faqs = [
         const data = await res.json();
         const tmp =  data.userId||null
         setUserId(tmp);
-        alert(tmp);        
+        
+        toast((t)=>{
+            t.duration = 5000,
+            t.icon= '👏'
+            return (
+              <div className="flex items-center gap-2">
+                {`Congrats! You (Telegram ID: ${tmp}) just have been subscribed!`} 
+              </div>
+            )
+          })
+  
+        //alert(tmp);        
 
     } catch (error) {
         console.error('error to obtain userId', error);
