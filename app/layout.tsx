@@ -1,15 +1,18 @@
-'use client'
+"use client";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Script from "next/script";
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+      <Script src="https://telegram.org/js/telegram-web-app.js" strategy = "beforeInteractive"/>
+      </head>
+      <body>                
         <div className="flex-col">
           <div >          
             <Navbar/>

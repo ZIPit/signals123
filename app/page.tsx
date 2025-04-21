@@ -1,4 +1,14 @@
+'use client';
 import { ArrowUpRight, ArrowDownLeft, Clock, CircleCheck, Archive } from "lucide-react";
+import { useEffect, useState } from "react";
+
+declare global {
+  interface Window {
+    Telegram?:{
+      WebApp?: any
+    }
+  }
+}
 
 
 export default function Home() {
@@ -46,8 +56,37 @@ export default function Home() {
     Sell: "bg-red-100 text-red-700",
   };
 
-  return (
-    <div className="bg-gray-50 min-h-screen text-gray-800">
+ const [telegramId,setTelegramId] = useState<string|null>(null)
+
+  useEffect(()=>{
+    if (window.Telegram?.WebApp) {
+      const initDataString = window.Telegram.WebApp.initData;
+      if (initDataString){
+        const urlParams = new URLSearchParams(initDataString);
+        try {
+         const user = JSON.parse(urlParams.get('user')||'{}');
+         if (user.id) {
+          setTelegramId(user.id.toString());
+          console.log('TelegramID is ',telegramId);
+         } 
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+        }      
+
+      }
+    } 
+    else {console.log("no telegram found")}
+  },[])
+
+
+  const checkChannelMembership = async () => {
+    if (!telegramId) {
+      alert('this app can only be used within telegram');
+    }
+  }
+
+  return (    
+    <div className="bg-gray-50 min-h-screen text-gray-800">      
       {/* Header */}
       <section className="text-center py-14 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
         <h1 className="text-4xl font-bold mb-2">Live Trading Signals</h1>
