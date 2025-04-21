@@ -76,7 +76,7 @@ export default function Home() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({userId:'22222'}),
+          body: JSON.stringify({userId:telegramId}),
 
         });
       }
