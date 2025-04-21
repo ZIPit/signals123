@@ -75,7 +75,33 @@ export default function Home() {
        
         //alert('Hello ' + username+"! Welcome.");
         const toastText = "Hello  "+ username+"! Welcome";
-        const notify = () => toast(toastText);
+        const notify = () => toast('Hello World', {
+          duration: 4000,
+          position: 'top-center',
+        
+          // Styling
+          style: {},
+          className: '',
+        
+          // Custom Icon
+          icon: '👏',
+        
+          // Change colors of success/error/loading icon
+          iconTheme: {
+            primary: '#000',
+            secondary: '#fff',
+          },
+        
+          // Aria
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+        
+          // Additional Configuration
+          removeDelay: 1000,
+        });
+        
         notify;
 
        
