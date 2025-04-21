@@ -33,7 +33,7 @@ const faqs = [
         const data = await res.json();
         const tmp =  data.userId||null
         setUserId(tmp);
-        alert(userId);        
+        alert(tmp);        
 
     } catch (error) {
         console.error('error to obtain userId', error);

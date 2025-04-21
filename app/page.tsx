@@ -1,6 +1,7 @@
 'use client';
 import { ArrowUpRight, ArrowDownLeft, Clock, CircleCheck, Archive } from "lucide-react";
 import { useEffect, useState } from "react";
+import { cookies } from 'next/headers';
 
 declare global {
   interface Window {
@@ -8,6 +9,7 @@ declare global {
       WebApp?: any
     }
   }
+
 }
 
 
@@ -18,6 +20,8 @@ export default function Home() {
     expiration: string;
     type: "Buy" | "Sell";
   };
+
+
   const signals:Signal[] = [
     {
       symbol: "EUR/USD",
@@ -63,9 +67,18 @@ export default function Home() {
       
       const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
       if (initDataUnsafe?.user?.id) {
-        const idString = initDataUnsafe.user.id.toString();
-        setTelegramId(idString);
-        alert('TelegramID is ' + idString);
+        const userId = initDataUnsafe.user.id.toString();
+        setTelegramId(userId);
+        alert('TelegramID is ' + userId);
+        
+        fetch('/api/login',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({userId:'22222'}),
+
+        });
       }
       else {console.log("no telegram found. Can't init WebApp")}
         
