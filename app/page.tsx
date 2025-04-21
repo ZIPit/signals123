@@ -1,7 +1,6 @@
 'use client';
 import { ArrowUpRight, ArrowDownLeft, Clock, CircleCheck, Archive } from "lucide-react";
 import { useEffect, useState } from "react";
-import { cookies } from 'next/headers';
 
 declare global {
   interface Window {
@@ -69,8 +68,10 @@ export default function Home() {
       const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
       if (initDataUnsafe?.user?.id) {
         const userId = initDataUnsafe.user.id.toString();
+        const username = initDataUnsafe.user.username.toString();
         setTelegramId(userId);
-        alert('TelegramID is ' + userId);
+        //alert('TelegramID is ' + userId);
+        alert('Hello ' + username+"! Welcome.");
         
        await fetch('/api/login',{
           method: 'POST',

@@ -5,6 +5,7 @@ import {AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineFacebook} fr
 import { useState } from "react";
 import Link from "next/link";
 
+
 const Navbar = ()=>{
 
     const [menuOpen,setMenuOpen] = useState(false);
@@ -42,7 +43,14 @@ const Navbar = ()=>{
             </div>
             {/* Мобильное меню */}
             <div onClick={handleNav} className="sm:hidden cursor-pointer pl-24">
-                <AiOutlineMenu size={25}/>
+                <div className="flex gap-3">
+                    <AiOutlineMenu size={25}/>
+                    {/* <div className="avatar avatar-placeholder ">
+                      <div className="bg-black text-neutral-content w-8 h-8  rounded">
+                        <span className="text-xl text-white pl-1">UI</span>
+                      </div>
+                    </div> */}
+                </div>
             </div>
             <div className={
                 menuOpen
