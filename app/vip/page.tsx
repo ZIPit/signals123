@@ -1,7 +1,9 @@
 
-'use client'
+'use client';
 import { useState } from "react";
 import { CheckCircle, Star, Zap, ShieldCheck, Bell, XCircle } from "lucide-react";
+
+
 
 
 
@@ -22,6 +24,20 @@ const faqs = [
       answer: "VIP users get priority support via chat/email.",
     },
   ];
+
+  const [userId,setUserId] = useState<string|null>(null);
+  const getUsrId = async () =>{
+
+    try {
+        const res = await fetch('api/getUsr/Cookie');
+        const data = await res.json();
+        setUserId(data.userId||null);
+
+    } catch (error) {
+        console.error('error to obtain userId', error);
+    }
+
+}
     return (
         <div className="bg-gray-50 text-gray-800">
           {/* Hero Section */}
@@ -30,7 +46,7 @@ const faqs = [
             <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto">
               Get real-time, ad-free VIP signals from professional analysts. Stay ahead of the market.
             </p>
-            <button className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl shadow hover:bg-gray-100 transition">
+            <button className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl shadow hover:bg-gray-100 transition" onClick={getUsrId}>
               Subscribe Now
             </button>
           </section>

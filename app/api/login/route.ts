@@ -1,9 +1,10 @@
 import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {
-  const userId = '234';
+    const body = await request.json(); 
+    const userId = body.userId; 
 
-  const cookieStore = await cookies(); // ⬅️ просто вызов, без await
+  const cookieStore = await cookies(); 
   cookieStore.set('userId', userId, {
     httpOnly: true,
     secure: true,
