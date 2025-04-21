@@ -1,6 +1,7 @@
 'use client';
 import { ArrowUpRight, ArrowDownLeft, Clock, CircleCheck, Archive } from "lucide-react";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 declare global {
   interface Window {
@@ -71,7 +72,13 @@ export default function Home() {
         const username = initDataUnsafe.user.username.toString();
         setTelegramId(userId);
         //alert('TelegramID is ' + userId);
-        alert('Hello ' + username+"! Welcome.");
+       
+        //alert('Hello ' + username+"! Welcome.");
+        const toastText = "Hello  "+ username+"! Welcome";
+        const notify = () => toast(toastText);
+        notify;
+
+       
         
        await fetch('/api/login',{
           method: 'POST',
