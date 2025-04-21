@@ -67,26 +67,10 @@ export default function Home() {
         setTelegramId(idString);
         alert('TelegramID is ' + idString);
       }
-      else {console.log("tttt")}
-      
-      // const initDataString = window.Telegram.WebApp.initData||"";
-      // if (initDataString){        
-      //   const urlParams = new URLSearchParams(initDataString);
-      //   try {
-      //    const user = JSON.parse(urlParams.get('user')||'{}');
-      //    if (user.id) {
-      //     const idString = user.id.toString()
-      //     setTelegramId(idString);
-      //     alert('TelegramID is '+idString);
-      //    } 
-      //   } catch (error) {
-      //     console.error("Error parsing user data:", error);
-      //   }         
-
-      // }
-      // else console.log("string is ", initDataString);     
+      else {console.log("no telegram found. Can't init WebApp")}
+        
     } 
-    else {alert("no telegram found")}
+    else {alert("no telegram found. window object is empty")}
   },[])
 
 
