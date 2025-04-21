@@ -29,9 +29,11 @@ const faqs = [
   const getUsrId = async () =>{
 
     try {
-        const res = await fetch('api/getUsr/Cookie');
+        const res = await fetch('api/getUsrCookie');
         const data = await res.json();
-        setUserId(data.userId||null);
+        const tmp =  data.userId||null
+        setUserId(tmp);
+        alert(userId);        
 
     } catch (error) {
         console.error('error to obtain userId', error);
