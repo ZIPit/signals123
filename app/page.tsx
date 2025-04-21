@@ -59,32 +59,38 @@ export default function Home() {
  const [telegramId,setTelegramId] = useState<string|null>(null)
 
   useEffect(()=>{
-    console.log('blalba');
     if (window.Telegram?.WebApp) {
-      const initDataString = window.Telegram.WebApp.initData;
-      if (initDataString){
-        const urlParams = new URLSearchParams(initDataString);
-        try {
-         const user = JSON.parse(urlParams.get('user')||'{}');
-         if (user.id) {
-          setTelegramId(user.id.toString());
-          alert('TelegramID is '+telegramId);
-         } 
-        } catch (error) {
-          console.error("Error parsing user data:", error);
-        }      
-
+      
+      const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+      if (initDataUnsafe?.user?.id) {
+        const idString = initDataUnsafe.user.id.toString();
+        setTelegramId(idString);
+        alert('TelegramID is ' + idString);
       }
+      else {console.log("tttt")}
+      
+      // const initDataString = window.Telegram.WebApp.initData||"";
+      // if (initDataString){        
+      //   const urlParams = new URLSearchParams(initDataString);
+      //   try {
+      //    const user = JSON.parse(urlParams.get('user')||'{}');
+      //    if (user.id) {
+      //     const idString = user.id.toString()
+      //     setTelegramId(idString);
+      //     alert('TelegramID is '+idString);
+      //    } 
+      //   } catch (error) {
+      //     console.error("Error parsing user data:", error);
+      //   }         
+
+      // }
+      // else console.log("string is ", initDataString);     
     } 
     else {alert("no telegram found")}
   },[])
 
 
-  const checkChannelMembership = async () => {
-    if (!telegramId) {
-      alert('this app can only be used within telegram');
-    }
-  }
+  
 
   return (    
     <div className="bg-gray-50 min-h-screen text-gray-800">      
