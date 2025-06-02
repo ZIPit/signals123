@@ -13,7 +13,7 @@ const Vip = ()=>{
 const faqs = [
     {
       question: "What makes VIP signals different?",
-      answer: "They’re faster, more detailed, and hand-picked by our top analysts.",
+      answer: "They’re faster and more detailed, and hand-picked by our top analysts.",
     },
     {
       question: "Can I cancel anytime?",

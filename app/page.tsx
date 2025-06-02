@@ -12,7 +12,7 @@ declare global {
 
 }
 
-
+// Example
 export default function Home() {
   type Signal = {
     symbol: string;
