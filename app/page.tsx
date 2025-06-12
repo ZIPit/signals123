@@ -195,7 +195,8 @@ const [signals, setSignals] = useState<Signal[]>([]);
                       )}
                     </span>
                   </td>
-                  <td className="px-6 py-4 font-medium">{dayjs(signal.signal_dt).add(3, 'hour').format('DD.MM.YYYY HH:mm:ss')} (UTC+3)</td>
+                  {/* <td className="px-6 py-4 font-medium">{dayjs(signal.signal_dt).add(3, 'hour').format('DD.MM.YYYY HH:mm:ss')} (UTC+3)</td> */}
+                  <td className="px-6 py-4 font-medium">{dayjs(signal.signal_dt).format('DD.MM.YYYY HH:mm:ss')} (UTC+3)</td>
                   <td className="px-6 py-4">
                     <CountdownTimer targetTime={dayjs(signal.signal_dt).add(3, 'hour').toString() }  expiration ={signal.expiration} />
                   </td>
