@@ -35,9 +35,9 @@ const Navbar = ()=>{
                     <Link href="topBrokers">
                         <li>Top Brokers</li>
                     </Link>
-                    <Link href="timeZone">
+                    {/* <Link href="timeZone">
                         <li>Timezone</li>
-                    </Link>
+                    </Link> */}
                     
                 </ul>
             </div>
@@ -71,9 +71,9 @@ const Navbar = ()=>{
                         <Link href= "topBrokers">
                             <li onClick={()=>setMenuOpen(false)} className="py-4 cursor-pointer">Top Brokers</li>
                         </Link>
-                        <Link href = "timeZone">
+                        {/* <Link href = "timeZone">
                             <li onClick={()=>setMenuOpen(false)} className="py-4 cursor-pointer">Timezone</li>
-                        </Link>
+                        </Link> */}
                     </ul>
                 </div>
             <div className="flex flex-row justify-around items-center pt-50">
