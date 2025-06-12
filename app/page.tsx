@@ -179,7 +179,7 @@ const [signals, setSignals] = useState<Signal[]>([]);
                       {signal.status}
                     </span>
                   </td> */}
-                  <td className="px-6 py-4">{signal.expiration}</td>
+                  <td className="px-6 py-4">{signal.expiration} Min</td>
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${typeStyles[signal.type]}`}>
                       {signal.type === "Buy" ? (
